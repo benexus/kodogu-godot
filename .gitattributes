@@ -1,0 +1,6 @@
+# What GitHub's download zip (and so the Godot Asset Library) leaves out: only addons/kodogu/,
+# the README and the licence are installed into a project.
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/project.godot export-ignore
+/test export-ignore

@@ -1,0 +1,13 @@
+; A small project for developing and testing the Kodogu add-on; open this folder in Godot.
+; The add-on itself is addons/kodogu/, which is what goes into a game project.
+
+config_version=5
+
+[application]
+
+config/name="Kodogu add-on (development)"
+config/features=PackedStringArray("4.7")
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/kodogu/plugin.cfg")

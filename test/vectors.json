@@ -1,0 +1,282 @@
+{
+  "names": [
+    {
+      "files": [{ "id": 1, "name": "Wooden Crate.glb", "format": "glb" }],
+      "single": ["Wooden_Crate.glb"],
+      "names": ["Wooden_Crate.glb"]
+    },
+    {
+      "files": [{ "id": 2, "name": "Café Table (final).GLB", "format": "glb" }],
+      "single": ["Cafe_Table_final.glb"],
+      "names": ["Cafe_Table_final.glb"]
+    },
+    {
+      "files": [{ "id": 3, "name": "../../etc/passwd", "format": "obj" }],
+      "single": ["passwd.obj"],
+      "names": ["passwd.obj"]
+    },
+    {
+      "files": [{ "id": 4, "name": "C:\\Users\\x\\model.fbx", "format": "fbx" }],
+      "single": ["model.fbx"],
+      "names": ["model.fbx"]
+    },
+    {
+      "files": [{ "id": 5, "name": "木の箱.glb", "format": "glb" }],
+      "single": ["file-5.glb"],
+      "names": ["file-5.glb"]
+    },
+    {
+      "files": [{ "id": 6, "name": "Ｆｕｌｌｗｉｄｔｈ ｎａｍｅ.gltf", "format": "gltf" }],
+      "single": ["Fullwidth_name.gltf"],
+      "names": ["Fullwidth_name.gltf"]
+    },
+    {
+      "files": [{ "id": 7, "name": "  spaced out　name .zip ", "format": "zip" }],
+      "single": ["spaced_out_name.zip"],
+      "names": ["spaced_out_name.zip"]
+    },
+    {
+      "files": [{ "id": 8, "name": "zero​width‮evil.glb", "format": "glb" }],
+      "single": ["zerowidthevil.glb"],
+      "names": ["zerowidthevil.glb"]
+    },
+    {
+      "files": [{ "id": 9, "name": "no extension", "format": "blend" }],
+      "single": ["no_extension.blend"],
+      "names": ["no_extension.blend"]
+    },
+    {
+      "files": [{ "id": 10, "name": "weird.extension_toolong", "format": "tscn" }],
+      "single": ["weird_extension_toolong.tscn"],
+      "names": ["weird_extension_toolong.tscn"]
+    },
+    {
+      "files": [{ "id": 11, "name": "con.glb", "format": "glb" }],
+      "single": ["con.glb"],
+      "names": ["_con.glb"]
+    },
+    {
+      "files": [{ "id": 12, "name": "LPT1.tres", "format": "tres" }],
+      "single": ["LPT1.tres"],
+      "names": ["_LPT1.tres"]
+    },
+    {
+      "files": [{ "id": 13, "name": "ﬁle ﬂow ½ ℌ𝔢𝔩𝔩𝔬 ①.glb", "format": "glb" }],
+      "single": ["file_flow_1_2_Hello_1.glb"],
+      "names": ["file_flow_1_2_Hello_1.glb"]
+    },
+    {
+      "files": [{ "id": 14, "name": "Ægir øre ß ŀ đ ł.obj", "format": "obj" }],
+      "single": ["gir_re_l.obj"],
+      "names": ["gir_re_l.obj"]
+    },
+    {
+      "files": [{ "id": 15, "name": "éè́.stl", "format": "stl" }],
+      "single": ["ee.stl"],
+      "names": ["ee.stl"]
+    },
+    {
+      "files": [{ "id": 16, "name": "....glb", "format": "glb" }],
+      "single": ["file-16.glb"],
+      "names": ["file-16.glb"]
+    },
+    {
+      "files": [{ "id": 17, "name": "___-.glb", "format": "glb" }],
+      "single": ["file-17.glb"],
+      "names": ["file-17.glb"]
+    },
+    {
+      "files": [
+        {
+          "id": 18,
+          "name": "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong.glb",
+          "format": "glb"
+        }
+      ],
+      "single": [
+        "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong.glb"
+      ],
+      "names": [
+        "longlonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong.glb"
+      ]
+    },
+    {
+      "files": [{ "id": 19, "name": "emoji 😀️ crate.glb", "format": "glb" }],
+      "single": ["emoji_crate.glb"],
+      "names": ["emoji_crate.glb"]
+    },
+    {
+      "files": [{ "id": 20, "name": "Ĳssel ǅemal Ⅻ.usdz", "format": "usdz" }],
+      "single": ["IJssel_Dzemal_XII.usdz"],
+      "names": ["IJssel_Dzemal_XII.usdz"]
+    },
+    {
+      "files": [
+        { "id": 21, "name": "Crate.glb", "format": "glb" },
+        { "id": 22, "name": "crate.GLB", "format": "glb" },
+        { "id": 23, "name": "other.glb", "format": "glb" }
+      ],
+      "single": ["Crate.glb", "crate.glb", "other.glb"],
+      "names": ["Crate-21.glb", "crate-22.glb", "other.glb"]
+    },
+    {
+      "files": [{ "id": 24, "name": "model.glb́", "format": "glb" }],
+      "single": ["model_glb.glb"],
+      "names": ["model_glb.glb"]
+    },
+    {
+      "files": [{ "id": 25, "name": "x.a​b", "format": "obj" }],
+      "single": ["x.ab"],
+      "names": ["x.ab"]
+    },
+    {
+      "files": [{ "id": 26, "name": "Привет мир.glb", "format": "glb" }],
+      "single": ["file-26.glb"],
+      "names": ["file-26.glb"]
+    }
+  ],
+  "credits": [
+    {
+      "asset": { "title": "Wooden Crate", "author": { "handle": "mika", "displayName": "Mika" } },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Wooden Crate\" by Mika (@mika), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": { "title": "Wooden Crate", "author": { "handle": "mika", "displayName": null } },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Wooden Crate\" by @mika, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "A \"quoted\" title with *stars*, [links](https://evil.test) & <b>html</b>",
+        "author": { "handle": "under_score", "displayName": "“Fancy” «name» @ www.example.com" }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"A 'quoted' title with \\*stars\\*, \\[links\\](https:\\/\\/evil.test) \\& \\<b\\>html\\</b\\>\" by 'Fancy' 'name' \\@ www\\.example.com (@under\\_score), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very long title end",
+        "author": { "handle": "abc", "displayName": null }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Very long title Very long title Very long title Very long title Very long title Very long title Very long title Very lon \\[…truncated\\]\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Tabs\tand\nnewlines and spaces  ",
+        "author": { "handle": "x-y", "displayName": "  Name  " }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Tabs and newlinesand spaces\" by Name (@x-y), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Bidi ‮evil‬ and zero​width",
+        "author": { "handle": "zed", "displayName": "Z" }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Bidi evil and zerowidth\" by Z (@zed), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Back\\slash `code` ~strike~ |pipe| !bang",
+        "author": { "handle": "qq_", "displayName": "a&b" }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Back\\\\slash \\`code\\` \\~strike\\~ \\|pipe\\| \\!bang\" by a\\&b (@qq\\_), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "WWW.Shout.com and ftp://host",
+        "author": { "handle": "www", "displayName": "Www.x" }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"WWW\\.Shout.com and ftp:\\/\\/host\" by Www\\.x (@www), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Love ❤️ and stray a️b, double 😀️️",
+        "author": { "handle": "keycap", "displayName": "Team 1️⃣ ☕︎ x︎" }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Love ❤️ and stray ab, double 😀️\" by Team 1⃣ ☕︎ x (@keycap), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    }
+  ],
+  "withCredits": [
+    {
+      "existing": null,
+      "entry": "ENTRY",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\n\n- ENTRY\n"
+    },
+    {
+      "existing": "",
+      "entry": "ENTRY",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "- ENTRY\n"
+    },
+    {
+      "existing": "# Credits\n",
+      "entry": "ENTRY",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\n- ENTRY\n"
+    },
+    {
+      "existing": "# Credits\n\n- old line",
+      "entry": "ENTRY",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\n\n- old line\n- ENTRY\n"
+    },
+    {
+      "existing": "# Credits\n\n- x via Kodogu: https://example.org/assets/42/old-slug\n",
+      "entry": "ENTRY",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": null
+    }
+  ],
+  "lines": [
+    { "text": "plain", "max": 120, "line": "plain", "quoted": "plain" },
+    {
+      "text": "  spaces \t around\n",
+      "max": 120,
+      "line": "spaces around",
+      "quoted": "spaces around"
+    },
+    {
+      "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "max": 120,
+      "line": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa […truncated]",
+      "quoted": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa […truncated]"
+    },
+    { "text": "x​​y", "max": 120, "line": "xy", "quoted": "xy" },
+    {
+      "text": "ééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+      "max": 120,
+      "line": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé […truncated]",
+      "quoted": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé […truncated]"
+    },
+    {
+      "text": "ends with space ends with space ends with space ends with space ends with space ends with space ends with space ends with space ends with space ends with space ",
+      "max": 120,
+      "line": "ends with space ends with space ends with space ends with space ends with space ends with space ends with space ends wit […truncated]",
+      "quoted": "ends with space ends with space ends with space ends with space ends with space ends with space ends with space ends wit […truncated]"
+    }
+  ],
+  "markdown": [
+    { "text": "a*b_c", "escaped": "a\\*b\\_c" },
+    { "text": "x://y", "escaped": "x:\\/\\/y" },
+    { "text": "see www.site.org", "escaped": "see www\\.site.org" },
+    { "text": "a@b.c", "escaped": "a\\@b.c" },
+    { "text": "plain", "escaped": "plain" }
+  ]
+}

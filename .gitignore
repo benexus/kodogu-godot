@@ -1,0 +1,4 @@
+# Godot's cache, and what the add-on installs while you try it in this project.
+.godot/
+assets/
+CREDITS.md
