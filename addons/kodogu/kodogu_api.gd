@@ -209,6 +209,9 @@ func _summary_ok(a) -> bool:
 		"stats": func(x): return _has(x, {"downloads": func(n): return _is_int(n, 0)}),
 	}):
 		return false
+	# The current version (absent on a site from before versions, which then counts as 1).
+	if a.has("version") and not _has(a.version, {"number": func(x): return _is_int(x, 1)}):
+		return false
 	for f in a.formats:
 		if not FILE_FORMATS.has(f):
 			return false

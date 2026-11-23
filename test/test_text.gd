@@ -38,6 +38,8 @@ func _init() -> void:
 	for case in v.withCredits:
 		expect("with_credit %s" % var_to_str(case.existing),
 			Text.with_credit(case.existing, case.entry, case.page), case.result)
+		expect("credits_prop %s" % var_to_str(case.existing),
+			Text.credits_prop(case.existing, case.page), case.credited)
 
 	for case in v.lines:
 		expect("line %s" % case.text, Text.line(case.text, int(case.max)), case.line)

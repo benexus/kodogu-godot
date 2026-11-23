@@ -143,7 +143,7 @@ func _search() -> void:
 		_status.text = ref.error
 		return
 	if ref.has("id"):
-		_open(int(ref.id), ref.get("slug", ""))
+		_open(int(ref.id), ref.get("slug", ""), int(ref.get("version", "0")))
 		return
 	var q := {
 		"q": text,
@@ -189,16 +189,29 @@ func _fetch_page() -> void:
 
 
 ## A page URL on the site, an id, or id/slug opens that prop; anything else is a search
-## (ref.ts parseRef, without the slug lookup: a bare slug is searched instead).
+## (ref.ts parseRef, without the slug lookup: a bare slug is searched instead). A version asked
+## for (`?version=<n>` on a URL, `@<n>` after an id) comes back as "version"; the add-on installs
+## the current version only and says so when another one was asked for.
 func _parse_ref(text: String) -> Dictionary:
 	var id_re := RegEx.create_from_string("^([1-9][0-9]{0,15})(?:/([a-z0-9]+(?:-[a-z0-9]+)*))?/?\\z")
+	var number_re := RegEx.create_from_string("^[1-9][0-9]{0,15}\\z")
 	if text.to_lower().begins_with("http://") or text.to_lower().begins_with("https://"):
-		# Only the path counts, as with the CLI: a query or fragment is ignored.
+		# Only the path counts, as with the CLI, and a `version` query parameter.
 		var path_end := text.length()
 		for ch in "?#":
 			var at := text.find(ch)
 			if at != -1 and at < path_end:
 				path_end = at
+		var version := ""
+		var hash_at := text.find("#")
+		if text.find("?") != -1 and (hash_at == -1 or text.find("?") < hash_at):
+			var query := text.substr(text.find("?") + 1, (hash_at if hash_at != -1 else text.length()) - text.find("?") - 1)
+			for pair in query.split("&"):
+				if pair.begins_with("version="):
+					version = pair.substr(8).uri_decode()
+					if number_re.search(version) == null:
+						return {"error": "Not a version number: %s." % JSON.stringify(Text.line(version, 40))}
+					break
 		var url_re := RegEx.create_from_string("^(?i)(https?://[^/]+)(?-i)/assets/([^/]+)(?:/([^/]*))?/?\\z")
 		var m := url_re.search(text.substr(0, path_end))
 		if m == null:
@@ -209,7 +222,17 @@ func _parse_ref(text: String) -> Dictionary:
 		var idm := id_re.search(text)
 		if idm == null:
 			return {"error": "That URL is not a prop page (/assets/<id>/<slug>)."}
-		return {"id": idm.get_string(1), "slug": idm.get_string(2)}
+		var found := {"id": idm.get_string(1), "slug": idm.get_string(2)}
+		if version != "":
+			found["version"] = version
+		return found
+	var at := text.rfind("@")
+	if at != -1 and id_re.search(text.substr(0, at)) != null:
+		var asked := text.substr(at + 1)
+		if number_re.search(asked) == null:
+			return {"error": "Not a version number: %s. Write <id>@<n>." % JSON.stringify(Text.line(asked, 40))}
+		var m3 := id_re.search(text.substr(0, at))
+		return {"id": m3.get_string(1), "slug": m3.get_string(2), "version": asked}
 	var m2 := id_re.search(text)
 	if m2 != null:
 		return {"id": m2.get_string(1), "slug": m2.get_string(2)}
@@ -282,7 +305,8 @@ func _show_empty_detail() -> void:
 	_detail.add_child(l)
 
 
-func _open(id: int, slug: String) -> void:
+## Opens prop `id`; `wanted` is a version asked for (0: none), which only changes what is said.
+func _open(id: int, slug: String, wanted := 0) -> void:
 	if not _site_ok():
 		return
 	_detail_serial += 1
@@ -302,6 +326,12 @@ func _open(id: int, slug: String) -> void:
 		return
 	_asset = asset
 	_show_asset(asset)
+	var current := Text.version_number(asset)
+	if wanted > 0 and wanted != current:
+		var note := _wrapped("You asked for version %d. The add-on installs the current version, %d; download version %d from the prop's page." % [wanted, current, wanted])
+		note.add_theme_color_override("font_color", get_theme_color("warning_color", "Editor"))
+		_detail.add_child(note)
+		_detail.move_child(note, 0)
 
 
 func _show_asset(a: Dictionary) -> void:
@@ -336,6 +366,14 @@ func _show_asset(a: Dictionary) -> void:
 	grid.add_theme_constant_override("h_separation", 12)
 	_detail.add_child(grid)
 	_row(grid, "Licence", "%s (%s)" % [Text.line(a.license.name, 80), Text.line(a.license.id, 40)])
+	var number := Text.version_number(a)
+	var versions = a.get("versions")
+	var count: int = versions.size() if versions is Array else 1
+	if number > 1 or count > 1:
+		var label = a.version.get("label") if a.get("version") is Dictionary else null
+		_row(grid, "Version", "%d%s%s" % [number,
+			" (%s)" % Text.line(label, 32) if label is String and Text.line(label, 32) != "" else "",
+			", the current one of %d" % count if count > 1 else ""])
 	_row(grid, "Type", "%s in %s" % [Text.line(a.type, 20), Text.line(a.category.name, 60)])
 	if a.get("engine") is String:
 		_row(grid, "Made for", Text.line(a.engine, 20) + (" " + Text.line(a.engineVersion, 20) if a.get("engineVersion") is String else ""))

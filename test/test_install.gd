@@ -178,6 +178,14 @@ func _run() -> void:
 		and after.slice(3).get_string_from_utf8().begins_with("# Credits\n\n- x\n- \"T\" by @abc, CC-BY-4.0"))
 	var c2: Dictionary = installer._credit(asset("crate"), lic, page)
 	check("a second credit is not added", c2.ok and FileAccess.get_file_as_bytes(credits) == after)
+	var v2 := asset("crate")
+	v2.version = {"number": 2}
+	var c4: Dictionary = installer._credit(v2, lic, page)
+	after = FileAccess.get_file_as_bytes(credits)
+	var text := after.slice(3).get_string_from_utf8()
+	check("a newer version's credit replaces the line (%s)" % c4.get("message", c4.get("error")),
+		c4.ok and c4.message.begins_with("Updated") and text.contains("- \"T\" (version 2) by @abc")
+		and text.count("via Kodogu:") == 1 and after.slice(0, 3) == bom)
 	DirAccess.make_dir_absolute(project.path_join(".CREDITS.md.kodogu-partial"))
 	var c3: Dictionary = installer._credit(asset("other"), lic, "https://example.org/assets/2/other")
 	check("a folder in the partial file's place stops the write", not c3.ok)

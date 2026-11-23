@@ -190,8 +190,11 @@ func run(api: Api, asset: Dictionary, license: Dictionary, p: Dictionary, say: C
 		return made
 	for name in p.same:
 		say.call("Already there: res://assets/%s/%s" % [p.folder, name])
-	say.call("Adding \"%s\" by @%s (%s) from %s" % [
-		Text.line(asset.title, Text.CAP_TITLE), asset.author.handle, license.id, page])
+	# Always the current version, so the CLI's "an earlier one" wording never applies here.
+	var number := Text.version_number(asset)
+	say.call("Adding \"%s\"%s by @%s (%s) from %s" % [
+		Text.line(asset.title, Text.CAP_TITLE), " version %d" % number if number > 1 else "",
+		asset.author.handle, license.id, page])
 
 	var installed: int = p.same.size()
 	var failure := ""
@@ -260,6 +263,8 @@ func _credit(asset: Dictionary, license: Dictionary, page: String) -> Dictionary
 	if DirAccess.rename_absolute(partial, path) != OK:
 		DirAccess.remove_absolute(partial)
 		return {"ok": false, "error": "Could not write CREDITS.md; it was not changed."}
+	# A line for another version (or licence) of the prop was replaced rather than added.
+	var done := "Updated" if Text.credits_prop(existing.text, page) else "Added"
 	return {"ok": true, "message":
-		"Added the credit line to CREDITS.md (%s requires attribution: keep it)." % license.id
-		if license.attributionRequired else "Added the credit line to CREDITS.md."}
+		"%s the credit line in CREDITS.md (%s requires attribution: keep it)." % [done, license.id]
+		if license.attributionRequired else "%s the credit line in CREDITS.md." % done}

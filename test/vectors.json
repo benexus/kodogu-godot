@@ -210,38 +210,122 @@
       "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
       "page": "https://example.org/assets/42/wooden-crate",
       "entry": "\"Love ❤️ and stray ab, double 😀️\" by Team 1⃣ ☕︎ x (@keycap), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Crate",
+        "author": { "handle": "abc", "displayName": null },
+        "version": { "number": 1 }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Crate *v*",
+        "author": { "handle": "abc", "displayName": "A" },
+        "version": { "number": 2 }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Crate \\*v\\*\" (version 2) by A (@abc), CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
+    },
+    {
+      "asset": {
+        "title": "Crate",
+        "author": { "handle": "abc", "displayName": null },
+        "version": { "number": 12 }
+      },
+      "license": { "id": "CC-BY-4.0", "url": "https://creativecommons.org/licenses/by/4.0/" },
+      "page": "https://example.org/assets/42/wooden-crate",
+      "entry": "\"Crate\" (version 12) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate"
     }
   ],
   "withCredits": [
     {
       "existing": null,
-      "entry": "ENTRY",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
       "page": "https://example.org/assets/42/wooden-crate",
-      "result": "# Credits\n\n- ENTRY\n"
+      "result": "# Credits\n\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": false
     },
     {
       "existing": "",
-      "entry": "ENTRY",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
       "page": "https://example.org/assets/42/wooden-crate",
-      "result": "- ENTRY\n"
+      "result": "- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": false
     },
     {
       "existing": "# Credits\n",
-      "entry": "ENTRY",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
       "page": "https://example.org/assets/42/wooden-crate",
-      "result": "# Credits\n- ENTRY\n"
+      "result": "# Credits\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": false
     },
     {
       "existing": "# Credits\n\n- old line",
-      "entry": "ENTRY",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
       "page": "https://example.org/assets/42/wooden-crate",
-      "result": "# Credits\n\n- old line\n- ENTRY\n"
+      "result": "# Credits\n\n- old line\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": false
     },
     {
       "existing": "# Credits\n\n- x via Kodogu: https://example.org/assets/42/old-slug\n",
-      "entry": "ENTRY",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
       "page": "https://example.org/assets/42/wooden-crate",
-      "result": null
+      "result": "# Credits\n\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n- other\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\n\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n- other\n",
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": null,
+      "credited": true
+    },
+    {
+      "existing": "# Credits\r\n\r\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\r\n- other\r\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\r\n\r\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\r\n- other\r\n",
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": "# Credits\n\n- \"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate (kept for the menu)\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": null,
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n- \"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate note\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": null,
+      "credited": true
+    },
+    {
+      "existing": "# Credits\n\n\"Crate\" by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate\n",
+      "entry": "\"Crate\" (version 2) by @abc, CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/), via Kodogu: https://example.org/assets/42/wooden-crate",
+      "page": "https://example.org/assets/42/wooden-crate",
+      "result": null,
+      "credited": true
     }
   ],
   "lines": [

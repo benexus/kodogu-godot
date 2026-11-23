@@ -150,28 +150,73 @@ static func markdown_text(text: String) -> String:
 
 ## `"<title>" by <name> (@handle), <licence id> (<licence url>), via Kodogu: <page url>`, with
 ## the uploader's parts and the licence id escaped for Markdown (credits.ts creditsEntry).
+## The prop's version number: its current version's, 1 when the answer has none (a site from
+## before versions).
+static func version_number(asset: Dictionary) -> int:
+	var v = asset.get("version")
+	if v is Dictionary and (v.get("number") is int or v.get("number") is float):
+		return maxi(1, int(v.number))
+	return 1
+
+
+## creditLine with markdownText as the escape: ` (version <n>)` follows the title from version 2 on.
 static func credits_entry(asset: Dictionary, license_id: String, license_url: String, page_url: String) -> String:
 	var author: Dictionary = asset.get("author", {})
-	var title := markdown_text(quoted(str(asset.get("title", "")), CAP_TITLE))
+	var number := version_number(asset)
+	var title := markdown_text(quoted(str(asset.get("title", "")), CAP_TITLE)) 		+ ("\" (version %d)" % number if number > 1 else "\"")
 	var handle := "@" + markdown_text(str(author.get("handle", "")))
 	var who := handle
 	var display = author.get("displayName")
 	if display is String and display != "":
 		who = "%s (%s)" % [markdown_text(quoted(display, CAP_DISPLAY_NAME)), handle]
-	return "\"%s\" by %s, %s (%s), via Kodogu: %s" % [
+	return "\"%s by %s, %s (%s), via Kodogu: %s" % [
 		title, who, markdown_text(license_id), license_url, page_url,
 	]
 
 
-## CREDITS.md with the entry appended, or null when the prop is already credited there.
+## The page URL up to its id: the slug after it may change, the id does not.
+static func _id_part(page_url: String) -> String:
+	return page_url.substr(0, page_url.rfind("/") + 1)
+
+
+## Whether CREDITS.md already has a line for the prop with this page URL (any version).
+static func credits_prop(existing, page_url: String) -> bool:
+	return existing != null and (existing as String).contains("via Kodogu: " + _id_part(page_url))
+
+
+## CREDITS.md with the entry added, or null when the prop is already credited with exactly this
+## line. The prop's generated line that differs (another version, another licence) is replaced,
+## keeping its line ending; a line the user changed after the URL is left alone (null).
 static func with_credit(existing, entry: String, page_url: String):
 	if existing == null:
-		return CREDITS_HEADER + "- " + entry + "\n"
-	var id_part := page_url.substr(0, page_url.rfind("/") + 1)
-	if (existing as String).contains("via Kodogu: " + id_part):
-		return null
-	var separator := "" if existing == "" or (existing as String).ends_with("\n") else "\n"
-	return existing + separator + "- " + entry + "\n"
+		return CREDITS_HEADER + "- " + entry + "
+"
+	var marker := "via Kodogu: " + _id_part(page_url)
+	var lines := (existing as String).split("
+")
+	for i in lines.size():
+		var l: String = lines[i]
+		if not l.contains(marker):
+			continue
+		var ending := "" if l.ends_with("") else ""
+		var text := l.substr(0, l.length() - ending.length())
+		if text == "- " + entry:
+			return null
+		var after := text.substr(text.rfind(marker) + marker.length())
+		var generated := text.begins_with("- ")
+		for j in after.length():
+			if _is_space(after.unicode_at(j)):
+				generated = false
+		if not generated:
+			return null
+		lines[i] = "- " + entry + ending
+		return "
+".join(lines)
+	var separator := "" if existing == "" or (existing as String).ends_with("
+") else "
+"
+	return existing + separator + "- " + entry + "
+"
 
 
 static func _load_fold() -> void:

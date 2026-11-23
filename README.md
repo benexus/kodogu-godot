@@ -7,7 +7,12 @@ the "contains scripts" flag) and install one into the open project.
 It does what Kodogu's command-line tool (`kodogu add`) does, with the same paths and credit text:
 
 - files go to `res://assets/<slug>/`, with the CLI's safe file names;
-- the credit line goes into `CREDITS.md` at the project root, once per prop;
+- the credit line goes into `CREDITS.md` at the project root, once per prop; from a prop's second
+  version on it names the version, and installing a newer version replaces the prop's line (a
+  line you edited after its URL is left alone);
+- it installs a prop's current version; for an earlier one (`?version=<n>` in a pasted page URL,
+  or `<id>@<n>`) it says so and points to the prop's page, where every listed version can be
+  downloaded;
 - each download must match the size and sha256 the API lists, or it is not kept;
 - a prop with scripts is installed only after a warning; nothing from a prop is opened, extracted
   or run; zip archives stay zipped;
