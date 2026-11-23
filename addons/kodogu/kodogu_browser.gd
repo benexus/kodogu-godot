@@ -226,12 +226,12 @@ func _parse_ref(text: String) -> Dictionary:
 		if version != "":
 			found["version"] = version
 		return found
-	var at := text.rfind("@")
-	if at != -1 and id_re.search(text.substr(0, at)) != null:
-		var asked := text.substr(at + 1)
+	var version_at := text.rfind("@")
+	if version_at != -1 and id_re.search(text.substr(0, version_at)) != null:
+		var asked := text.substr(version_at + 1)
 		if number_re.search(asked) == null:
 			return {"error": "Not a version number: %s. Write <id>@<n>." % JSON.stringify(Text.line(asked, 40))}
-		var m3 := id_re.search(text.substr(0, at))
+		var m3 := id_re.search(text.substr(0, version_at))
 		return {"id": m3.get_string(1), "slug": m3.get_string(2), "version": asked}
 	var m2 := id_re.search(text)
 	if m2 != null:

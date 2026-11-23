@@ -54,6 +54,8 @@ for example `http://localhost:8787` for a local dev server (http only for this c
 | `addons/kodogu/kodogu_fold.gd`    | Generated: the Unicode folding the file-name rules need.          |
 | `project.godot`                   | A small project for trying the add-on; open this folder in Godot. |
 | `test/`                           | The tests below.                                                  |
+| `media/`                          | The Asset Store's thumbnail and screenshots (not in any zip).     |
+| `STORE.md`                        | The Asset Store listing's text and fields.                        |
 
 ## Tests
 
@@ -70,6 +72,10 @@ godot --headless --path . --script res://test/test_install.gd -- <empty folder>
 # End to end against the live site: search, previews, install, a second install, and refused
 # downloads with a wrong size or checksum. Installs into the folder given; counts as a download.
 godot --headless --path . --script res://test/test_live.gd -- <empty folder> <prop id>...
+
+# The add-on's scripts raise none of Godot's default warnings (no network). Godot hides warnings
+# under res://addons/, so this parses them in a probe project built in the folder given.
+godot --headless --path . --script res://test/test_warnings.gd -- <empty folder>
 ```
 
 `kodogu_fold.gd` and `test/vectors.json` are generated from the TypeScript rules in Kodogu's own
@@ -100,4 +106,11 @@ git -C ../kodogu-godot tag v<version>
 git -C ../kodogu-godot push origin main v<version>
 ```
 
-It is not on the Godot Asset Library yet; submitting it there is a separate step.
+For the [Godot Asset Store](https://store.godotengine.org), which Godot 4.7's editor browses, run
+`test/test_warnings.gd` before releasing (the store asks for scripts without warnings), then build
+its zip, which holds `addons/kodogu/` and nothing else, from the tag, and upload it as a new
+version (version name, changelog, minimum Godot 4.7). `STORE.md` has the listing's text.
+
+```sh
+git -C ../kodogu-godot archive --format=zip -o ../kodogu-godot-<version>.zip v<version> addons/kodogu
+```

@@ -245,7 +245,7 @@ static func _in_ranges(cp: int, ranges: Array) -> bool:
 	var lo := 0
 	var hi := ranges.size() - 1
 	while lo <= hi:
-		var mid := (lo + hi) / 2
+		var mid := (lo + hi) >> 1
 		if cp < ranges[mid][0]:
 			hi = mid - 1
 		elif cp > ranges[mid][1]:
