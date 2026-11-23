@@ -14,6 +14,10 @@ It does what Kodogu's command-line tool (`kodogu add`) does, with the same paths
   or `<id>@<n>`) it says so and points to the prop's page, where every listed version can be
   downloaded;
 - each download must match the size and sha256 the API lists, or it is not kept;
+- from just before a prop's files land until Godot has imported them, the project setting
+  _Editor > Import > Use Multiple Threads_ is off, in memory only (`project.godot` is not saved
+  by this, and the setting gets its own value back): Godot 4.7.2 crashes when it imports a model
+  with embedded textures into an open project on several threads;
 - a prop with scripts is installed only after a warning; nothing from a prop is opened, extracted
   or run; zip archives stay zipped;
 - a link (symlink or junction) on the way to `res://assets/<slug>/` or in place of `CREDITS.md`

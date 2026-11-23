@@ -525,11 +525,80 @@ func _install_steps(asset: Dictionary) -> void:
 	if not license.ok:
 		r = license
 	else:
+		# Before the first file lands: the editor may start importing on its own (it looks for
+		# new files whenever its window gets the focus back).
+		_hold_import_threads()
 		r = await installer.run(_api, asset, license.data, again, _say)
+		if int(r.get("installed", 0)) > 0:
+			EditorInterface.get_resource_filesystem().scan()
+		# Not awaited: the Install button comes back while the editor imports.
+		_release_import_threads()
 	if not r.ok:
 		_say(r.error)
-	if int(r.get("installed", 0)) > 0:
-		EditorInterface.get_resource_filesystem().scan()
+
+
+# --- Importing on one thread ----------------------------------------------------------------
+
+## Godot 4.7.2 crashes ("Task 'reimport' already exists", then a segmentation fault) when a
+## model with embedded textures is imported into an open project while imports run on several
+## threads. A model without textures is fine, and so is the same import on one thread. So from
+## just before a prop's files land until the editor has imported them, the project setting
+## Editor > Import > Use Multiple Threads is off. Only in memory: this does not save
+## project.godot, and the setting gets its own value back afterwards.
+const IMPORT_THREADS := "editor/import/use_multiple_threads"
+## How long the editor must have imported nothing before the setting goes back. The textures a
+## model brings are imported a second time a moment after the model itself.
+const IMPORT_QUIET_MSEC := 2000
+
+## Installs that still hold the setting off.
+var _import_holds := 0
+## The setting's own value while it is held off.
+var _import_threads_before: Variant = null
+## When the editor last scanned or imported (Time.get_ticks_msec).
+var _import_seen_msec := 0
+
+
+func _hold_import_threads() -> void:
+	if _import_holds == 0:
+		_import_threads_before = ProjectSettings.get_setting(IMPORT_THREADS, true)
+		ProjectSettings.set_setting(IMPORT_THREADS, false)
+		var fs := EditorInterface.get_resource_filesystem()
+		if not fs.resources_reimported.is_connected(_on_resources_reimported):
+			fs.resources_reimported.connect(_on_resources_reimported)
+	_import_holds += 1
+
+
+func _on_resources_reimported(_resources: PackedStringArray) -> void:
+	_import_seen_msec = Time.get_ticks_msec()
+
+
+## Gives up one hold once the editor has been quiet for a while, and puts the setting back with
+## the last one.
+func _release_import_threads() -> void:
+	var fs := EditorInterface.get_resource_filesystem()
+	_import_seen_msec = Time.get_ticks_msec()
+	while is_inside_tree() and (fs.is_scanning() or Time.get_ticks_msec() - _import_seen_msec < IMPORT_QUIET_MSEC):
+		if fs.is_scanning():
+			_import_seen_msec = Time.get_ticks_msec()
+		await get_tree().process_frame
+	if _import_holds > 0:
+		_import_holds -= 1
+		if _import_holds == 0:
+			_restore_import_threads()
+
+
+func _restore_import_threads() -> void:
+	ProjectSettings.set_setting(IMPORT_THREADS, _import_threads_before)
+	var fs := EditorInterface.get_resource_filesystem()
+	if fs.resources_reimported.is_connected(_on_resources_reimported):
+		fs.resources_reimported.disconnect(_on_resources_reimported)
+
+
+## The add-on is being switched off or the editor is closing: never leave the setting changed.
+func _exit_tree() -> void:
+	if _import_holds > 0:
+		_import_holds = 0
+		_restore_import_threads()
 
 
 func _ask(title: String, text: String, ok_text: String) -> bool:
